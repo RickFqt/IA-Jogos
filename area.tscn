@@ -7,6 +7,6 @@
 script = ExtResource("1_5w5it")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 700.0
+offset_bottom = 700.0
 texture = ExtResource("1_kh0to")
