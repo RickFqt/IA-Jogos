@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8xlapaui0ud0"]
+[gd_scene load_steps=4 format=3 uid="uid://c8xlapaui0ud0"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_ig8tc"]
 [ext_resource type="PackedScene" uid="uid://4l3pjtkhtprn" path="res://player.tscn" id="2_o4d2v"]
+[ext_resource type="PackedScene" uid="uid://criwplha3f8dp" path="res://HUD.tscn" id="3_4m4a6"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ig8tc")
@@ -9,4 +10,8 @@ script = ExtResource("1_ig8tc")
 [node name="Grid" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_o4d2v")]
+unique_name_in_owner = true
 position = Vector2(337, 194)
+
+[node name="Hud" parent="." instance=ExtResource("3_4m4a6")]
+unique_name_in_owner = true
