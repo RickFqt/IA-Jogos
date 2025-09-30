@@ -8,6 +8,13 @@
 script = ExtResource("1_ig8tc")
 
 [node name="Grid" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Collectables" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemies" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("2_o4d2v")]
 unique_name_in_owner = true

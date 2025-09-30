@@ -1,27 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://iql1uinbl6a5"]
+[gd_scene load_steps=3 format=3 uid="uid://iql1uinbl6a5"]
 
 [ext_resource type="Script" path="res://area.gd" id="1_5w5it"]
 [ext_resource type="Texture2D" uid="uid://yog6s0bomoxf" path="res://sprites/graysquare.png" id="1_kh0to"]
-[ext_resource type="PackedScene" uid="uid://bc7tsrsaidaim" path="res://life_collectable.tscn" id="3_1lygx"]
-[ext_resource type="PackedScene" uid="uid://dhw41qulpnls4" path="res://bomb_collectable.tscn" id="4_nwpvr"]
-[ext_resource type="PackedScene" uid="uid://c5cghnht3ys1t" path="res://enemy.tscn" id="5_edcpa"]
 
 [node name="Area" type="Node2D"]
 script = ExtResource("1_5w5it")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
 offset_right = 700.0
 offset_bottom = 700.0
 texture = ExtResource("1_kh0to")
 
-[node name="LifeCollectable" parent="." instance=ExtResource("3_1lygx")]
-position = Vector2(369, 48)
-
-[node name="BombCollectable" parent="." instance=ExtResource("4_nwpvr")]
-position = Vector2(403, 309)
-
-[node name="Enemy" parent="." instance=ExtResource("5_edcpa")]
-position = Vector2(427, 251)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_edcpa")]
-position = Vector2(342, 315)
+[node name="SpawnPoints" type="Node" parent="."]
+unique_name_in_owner = true
