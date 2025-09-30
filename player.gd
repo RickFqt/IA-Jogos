@@ -6,7 +6,7 @@ var health
 signal health_changed
 
 func _ready():
-	health = 2
+	health = max_health
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -22,6 +22,15 @@ func _physics_process(delta: float) -> void:
 		%AnimatedSprite2D.play("idle")
 	else:
 		%AnimatedSprite2D.play("walking")
+	
+	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		var damage_taken = 0
+		for mob in overlapping_mobs:
+			if mob.is_in_group("Enemy"):
+				damage_taken += mob.damage
+		health -= damage_taken * delta
+		health_changed.emit()
 
 func is_moving() -> bool:
 	return (Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || 
