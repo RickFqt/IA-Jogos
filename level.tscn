@@ -30,3 +30,5 @@ limit_left = 0
 limit_top = 0
 limit_right = 2600
 limit_bottom = 2600
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

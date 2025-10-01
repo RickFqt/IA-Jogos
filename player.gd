@@ -4,6 +4,7 @@ const speed = 200.0
 var max_health = 100
 var health
 signal health_changed
+signal health_depleted
 
 func _ready():
 	health = max_health
@@ -32,6 +33,8 @@ func _physics_process(delta: float) -> void:
 				damage_taken += mob.damage
 		health -= damage_taken * delta
 		health_changed.emit()
+		if health <= 0:
+			health_depleted.emit()
 
 func is_moving() -> bool:
 	return (Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || 

@@ -58,3 +58,7 @@ func _input(event: InputEvent) -> void:
 			%Player/Camera2D.make_current()
 		else:
 			%GlobalView.make_current()
+
+
+func _on_player_health_depleted() -> void:
+	%Hud.display_game_over()

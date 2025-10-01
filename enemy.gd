@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var max_health = 10
 var health = 10
-var damage = 1
+var damage = 10
 var speed = 100
 var player_ref : Node2D
 var last_known_player_position : Vector2
