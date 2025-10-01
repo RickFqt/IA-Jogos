@@ -28,7 +28,7 @@ func set_up(linhas : int, colunas : int):
 			$Grid.add_child(q)
 			
 			var spawn_points = []
-			for marker in q.get_node("SpawnPoints").get_children():
+			for marker in q.get_node("Content/SpawnPoints").get_children():
 				var global_pos = q.position + marker.position
 				spawn_points.append(global_pos)
 			
@@ -51,3 +51,10 @@ func set_up(linhas : int, colunas : int):
 				item.position = pos
 				%Collectables.add_child(item)
 				
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_camera"):
+		if %GlobalView.is_current():
+			%Player/Camera2D.make_current()
+		else:
+			%GlobalView.make_current()

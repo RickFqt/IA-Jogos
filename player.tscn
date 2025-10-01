@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://4l3pjtkhtprn"]
+[gd_scene load_steps=28 format=3 uid="uid://4l3pjtkhtprn"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_o53au"]
 [ext_resource type="Texture2D" uid="uid://tj7t71g5fs20" path="res://sprites/playersheet.png" id="1_svq4y"]
@@ -166,23 +166,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwqhu"]
 radius = 3.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dosge"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n14x2"]
 radius = 8.0
 height = 21.3333
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(38, 2)
-scale = Vector2(3, 3)
 collision_mask = 11
 script = ExtResource("1_o53au")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-11, -15)
+position = Vector2(-35, -46)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_jo73u")
-animation = &"idle"
+animation = &"walking"
 autoplay = "idle"
-frame_progress = 0.715081
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
@@ -193,11 +194,23 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-13, -5.66666)
+position = Vector2(-39, -19)
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_mwqhu")
+
+[node name="ProximityDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetector"]
+position = Vector2(-39, -30)
+shape = SubResource("RectangleShape2D_dosge")
+debug_color = Color(0.0843639, 0.646335, 0.169884, 0.42)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 2
 
@@ -205,3 +218,6 @@ collision_mask = 2
 position = Vector2(-13, -10)
 shape = SubResource("CapsuleShape2D_n14x2")
 debug_color = Color(0.90613, 0.288584, 0.247457, 0.42)
+
+[connection signal="area_entered" from="ProximityDetector" to="." method="_on_proximity_detector_area_entered"]
+[connection signal="area_exited" from="ProximityDetector" to="." method="_on_proximity_detector_area_exited"]

@@ -22,3 +22,11 @@ position = Vector2(337, 194)
 
 [node name="Hud" parent="." instance=ExtResource("3_4m4a6")]
 unique_name_in_owner = true
+
+[node name="GlobalView" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(0.2, 0.2)
+limit_left = 0
+limit_top = 0
+limit_right = 2600
+limit_bottom = 2600
